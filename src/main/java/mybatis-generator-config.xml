@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="context" targetRuntime="MyBatis3">
+
+
+        <commentGenerator>
+            <!-- 去除自动生成的时间戳，避免重复提交SVN -->
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!--Database Configuration-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/mybatis?serverTimezone=UTC" userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!---->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--Model Configurations-->
+        <!--实体类所在的位置-->
+        <javaModelGenerator targetPackage="com.test.mybatis.pojo"
+                            targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.test.mybatis.dao" targetProject=".\src\main\java">
+
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.test.mybatis.dao" targetProject=".\src\main\java" >
+
+        </javaClientGenerator>
+        <!--Table Configuration!!!-->
+        <table tableName="EMPLOYEE" enableSelectByExample="true"/>
+    </context>
+
+
+</generatorConfiguration>
+
+
+<!--
+        &lt;!&ndash; 由于beginningDelimiter和endingDelimiter的默认值为双引号(")，
+            在Mysql中不能这么写，所以还要将这两个默认值改为**反单引号(`)** &ndash;&gt;
+<property name="beginningDelimiter" value="`"/>
+<property name="endingDelimiter" value="`"/>
+
+<commentGenerator>
+&lt;!&ndash; 去除自动生成的时间戳，避免重复提交SVN &ndash;&gt;
+<property name="suppressDate" value="true"/>
+</commentGenerator>
+
+        &lt;!&ndash;数据库连接的信息：驱动类、连接地址、用户名、密码 &ndash;&gt;
+<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/DBName?characterEncoding=utf-8" userId="root"
+                password="******">
+</jdbcConnection>
+
+        &lt;!&ndash; 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal &ndash;&gt;
+<javaTypeResolver>
+<property name="forceBigDecimals" value="false"/>
+</javaTypeResolver>
+
+        &lt;!&ndash; 生成model模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径
+            也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下&ndash;&gt;
+<javaModelGenerator targetPackage="com.nanchang.pojo"
+                    targetProject="D:\Java\eclipse-workspace\generatorSqlmapCustom\src">
+
+&lt;!&ndash; enableSubPackages:是否让schema作为包的后缀 &ndash;&gt;
+<property name="enableSubPackages" value="false"/>
+
+&lt;!&ndash; 从数据库返回的值被清理前后的空格 &ndash;&gt;
+<property name="trimStrings" value="true"/>
+
+</javaModelGenerator>
+
+        &lt;!&ndash; targetProject:mapper映射文件生成的位置 &ndash;&gt;
+<sqlMapGenerator targetPackage="com.nanchang.mapper"
+                 targetProject="D:\Java\eclipse-workspace\generatorSqlmapCustom\src">
+&lt;!&ndash; enableSubPackages:是否让schema作为包的后缀 &ndash;&gt;
+<property name="enableSubPackages" value="false"/>
+</sqlMapGenerator>
+
+        &lt;!&ndash; targetPackage：mapper接口生成的位置 &ndash;&gt;
+<javaClientGenerator type="XMLMAPPER"
+                     targetPackage="com.nanchang.mapper"
+                     targetProject="D:\Java\eclipse-workspace\generatorSqlmapCustom\src">
+&lt;!&ndash; enableSubPackages:是否让schema作为包的后缀 &ndash;&gt;
+<property name="enableSubPackages" value="false"/>
+</javaClientGenerator>
+
+        &lt;!&ndash; 指定数据库表 &ndash;&gt;
+<table tableName="contract-record">
+&lt;!&ndash; 字段id为主键，并且自动递增 &ndash;&gt;
+<generatedKey column="id" sqlStatement="Mysql"/>
+</table>-->
